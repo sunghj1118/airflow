@@ -5,19 +5,19 @@ from airflow.operators.bash import BashOperator
 
 
 default_args = {
-    'owner': 'coder2j',
+    'owner': 'hyunjoon',
     'retries': 5,
     'retry_delay': timedelta(minutes=5)
 }
 
 with DAG(
-    dag_id='dag_with_catchup_backfill_v02',
     default_args=default_args,
-    start_date=datetime(2023, 9, 10),
-    schedule_interval='@daily',
-    catchup=False
+    dag_id="dag_with_cron_expression_v04",
+    start_date=datetime(2023, 9, 1),
+    schedule_interval='0 3 * * Tue-Fri'
 ) as dag:
     task1 = BashOperator(
         task_id='task1',
-        bash_command='echo This is a simple bash command!'
+        bash_command="echo dag with cron expression!"
     )
+    task1
