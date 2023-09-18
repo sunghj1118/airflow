@@ -202,7 +202,7 @@ def naver_crawl():
 
 with DAG(
     default_args=default_args,
-    dag_id="naver_mall_DAG4",
+    dag_id="legacy_naver_mall_DAG",
     start_date=datetime(2023, 9, 13),
     schedule_interval='0 0 * * *'
 ) as dag:
